@@ -30,7 +30,7 @@ body{
 
 .pluppB, .pluppR, .plupp {
     border-radius: 100%;
-    background-color: rgb(185, 185, 185);
+    background-color: #B9B9B9;
     height: 100%;
     width: 55px;
     display: inline-block;

@@ -1,251 +1,157 @@
-<div id="mainContainer" >
-    <div id="gameContainer">
-
-        <div class="row">
-            <div  class="pluppR" row='1' col='13'></div>
-        </div>
-        <div class="row">
-            <div  class="pluppR" row='2' col='12'></div>
-            <div  class="pluppR" row='2' col='14'></div>
-        </div>
-        <div class="row">
-            <div  class="pluppR" row='3' col='11'></div>
-            <div  class="pluppR" row='3' col='13'></div>
-            <div  class="pluppR" row='3' col='15'></div>
-        </div>
-        <div class="row">
-            <div  class="pluppR" row='4' col='10'></div>
-            <div  class="pluppR" row='4' col='12'></div>
-            <div  class="pluppR" row='4' col='14'></div>
-            <div  class="pluppR" row='4' col='16'></div>
-        </div>
-        <div class="row">
-            <div class="plupp" row='5' col='1'></div>
-            <div class="plupp" row='5' col='3'></div>
-            <div class="plupp" row='5' col='5'></div>
-            <div class="plupp" row='5' col='7'></div>
-            <div class="plupp" row='5' col='9'></div>
-            <div class="plupp" row='5' col='11'></div>
-            <div class="plupp" row='5' col='13'></div>
-            <div class="plupp" row='5' col='15'></div>
-            <div class="plupp" row='5' col='17'></div>
-            <div class="plupp" row='5' col='19'></div>
-            <div class="plupp" row='5' col='21'></div>
-            <div class="plupp" row='5' col='23'></div>
-            <div class="plupp" row='5' col='25'></div>
-        </div>
-        <div class="row">
-            <div class="plupp" row='6' col='2'></div>
-            <div class="plupp" row='6' col='4'></div>
-            <div class="plupp" row='6' col='6'></div>
-            <div class="plupp" row='6' col='8'></div>
-            <div class="plupp" row='6' col='10'></div>
-            <div class="plupp" row='6' col='12'></div>
-            <div class="plupp" row='6' col='14'></div>
-            <div class="plupp" row='6' col='16'></div>
-            <div class="plupp" row='6' col='18'></div>
-            <div class="plupp" row='6' col='20'></div>
-            <div class="plupp" row='6' col='22'></div>
-            <div class="plupp" row='6' col='24'></div>
-        </div>
-        <div class="row">
-            <div class="plupp" row='7' col='3'></div>
-            <div class="plupp" row='7' col='5'></div>
-            <div class="plupp" row='7' col='7'></div>
-            <div class="plupp" row='7' col='9'></div>
-            <div class="plupp" row='7' col='11'></div>
-            <div class="plupp" row='7' col='13'></div>
-            <div class="plupp" row='7' col='15'></div>
-            <div class="plupp" row='7' col='17'></div>
-            <div class="plupp" row='7' col='19'></div>
-            <div class="plupp" row='7' col='21'></div>
-            <div class="plupp" row='7' col='23'></div>
-        </div>
-        <div class="row">
-            <div class="plupp" row='8' col='4'></div>
-            <div class="plupp" row='8' col='6'></div>
-            <div class="plupp" row='8' col='8'></div>
-            <div class="plupp" row='8' col='10'></div>
-            <div class="plupp" row='8' col='12'></div>
-            <div class="plupp" row='8' col='14'></div>
-            <div class="plupp" row='8' col='16'></div>
-            <div class="plupp" row='8' col='18'></div>
-            <div class="plupp" row='8' col='20'></div>
-            <div class="plupp" row='8' col='22'></div>
-        </div>
-        <div class="row">
-            <div class="plupp" row='9' col='5'></div>
-            <div class="plupp" row='9' col='7'></div>
-            <div class="plupp" row='9' col='9'></div>
-            <div class="plupp" row='9' col='11'></div>
-            <div class="plupp" row='9' col='13'></div>
-            <div class="plupp" row='9' col='15'></div>
-            <div class="plupp" row='9' col='17'></div>
-            <div class="plupp" row='9' col='19'></div>
-            <div class="plupp" row='9' col='21'></div>
-        </div>
-        <div class="row">
-            <div class="plupp" row='10' col='4'></div>
-            <div class="plupp" row='10' col='6'></div>
-            <div class="plupp" row='10' col='8'></div>
-            <div class="plupp" row='10' col='10'></div>
-            <div class="plupp" row='10' col='12'></div>
-            <div class="plupp" row='10' col='14'></div>
-            <div class="plupp" row='10' col='16'></div>
-            <div class="plupp" row='10' col='18'></div>
-            <div class="plupp" row='10' col='20'></div>
-            <div class="plupp" row='10' col='22'></div>
-        </div>
-        <div class="row">
-            <div class="plupp" row='11' col='3'></div>
-            <div class="plupp" row='11' col='5'></div>
-            <div class="plupp" row='11' col='7'></div>
-            <div class="plupp" row='11' col='9'></div>
-            <div class="plupp" row='11' col='11'></div>
-            <div class="plupp" row='11' col='13'></div>
-            <div class="plupp" row='11' col='15'></div>
-            <div class="plupp" row='11' col='17'></div>
-            <div class="plupp" row='11' col='19'></div>
-            <div class="plupp" row='11' col='21'></div>
-            <div class="plupp" row='11' col='23'></div>
-        </div>
-        <div class="row">
-            <div class="plupp" row='12' col='2'></div>
-            <div class="plupp" row='12' col='4'></div>
-            <div class="plupp" row='12' col='6'></div>
-            <div class="plupp" row='12' col='8'></div>
-            <div class="plupp" row='12' col='10'></div>
-            <div class="plupp" row='12' col='12'></div>
-            <div class="plupp" row='12' col='14'></div>
-            <div class="plupp" row='12' col='16'></div>
-            <div class="plupp" row='12' col='18'></div>
-            <div class="plupp" row='12' col='20'></div>
-            <div class="plupp" row='12' col='22'></div>
-            <div class="plupp" row='12' col='24'></div>
-        </div>
-        <div class="row">
-            <div class="plupp" row='13' col='1'></div>
-            <div class="plupp" row='13' col='3'></div>
-            <div class="plupp" row='13' col='5'></div>
-            <div class="plupp" row='13' col='7'></div>
-            <div class="plupp" row='13' col='9'></div>
-            <div class="plupp" row='13' col='11'></div>
-            <div class="plupp" row='13' col='13'></div>
-            <div class="plupp" row='13' col='15'></div>
-            <div class="plupp" row='13' col='17'></div>
-            <div class="plupp" row='13' col='19'></div>
-            <div class="plupp" row='13' col='21'></div>
-            <div class="plupp" row='13' col='23'></div>
-            <div class="plupp" row='13' col='25'></div>
-        </div>
-        <div class="row">
-            <div  class="pluppB" row='14' col='10'></div>
-            <div  class="pluppB" row='14' col='12'></div>
-            <div  class="pluppB" row='14' col='14'></div>
-            <div  class="pluppB" row='14' col='16'></div>
-        </div>
-        <div class="row">
-            <div  class="pluppB" row='15' col='11'></div>
-            <div  class="pluppB" row='15' col='13'></div>
-            <div  class="pluppB" row='15' col='15'></div>
-        </div>
-        <div class="row">
-            <div  class="pluppB" row='16' col='12'></div>
-            <div  class="pluppB" row='16' col='14'></div>
-        </div>
-        <div class="row">
-            <div  class="pluppB" row='17' col='13'></div>
-        </div>
-    </div>
-</div>
-
-
-
-
 function init() {
-    document.getElementById("start").onclick = startGame;
-  
-    function startGame() {
-  
-      let vald = null;
-  
-      let rödArray = Array.from(document.getElementsByClassName('plupp')).filter(div => {
-        const rowValue = parseInt(div.getAttribute('row'));
-        return rowValue >= 1 && rowValue <= 4;
+
+  document.getElementById("start").onclick = startGame;
+
+  function startGame() {
+
+    let från = null;
+    let index = null;
+    let tur = "röd";
+    let specialflytt = false;
+
+
+    let rödArray = Array.from(document.getElementsByClassName('plupp')).filter(div => {
+      const rowValue = parseInt(div.getAttribute('row'));
+      return rowValue >= 1 && rowValue <= 4;
+    });
+
+    let blåArray = Array.from(document.getElementsByClassName('plupp')).filter(div => {
+      const rowValue = parseInt(div.getAttribute('row'));
+      return rowValue >= 14 && rowValue <= 17;
+    });
+
+    let oanvändaArray = Array.from(document.getElementsByClassName('plupp')).filter(div => {
+      const rowValue = parseInt(div.getAttribute('row'));
+      return rowValue >= 5 && rowValue <= 13;
+    });
+
+    let alla = Array.from(document.getElementsByClassName('plupp'))
+
+    changeBackground(rödArray, "red");
+    changeBackground(blåArray, "blue");
+
+    function changeBackground(Array, color) {
+      Array.forEach(div => {
+        div.style.backgroundColor = color;
+        div.style.border = "none";
+        div.style.width = "55px";
       });
-      let blåArray = Array.from(document.getElementsByClassName('plupp')).filter(div => {
-        const rowValue = parseInt(div.getAttribute('row'));
-        return rowValue >= 14 && rowValue <= 17;
-      });
-  
-      let oanvändaArray = Array.from(document.getElementsByClassName('plupp')).filter(div => {
-        const rowValue = parseInt(div.getAttribute('row'));
-        return rowValue >= 5 && rowValue <= 13;
-      });
-  
-      changeBackground(rödArray, "red");
-      changeBackground(blåArray, "blue");
-      changeBackground(oanvändaArray, "lightgray");
-  
-      for (var i = 0; i < rödArray.length; i++) {
-        (function (i) {
-          rödArray[i].addEventListener("click", function () {
-            pluppClicked(rödArray[i], i);
-          });
-        })(i);
-      }
-  
-      for (var i = 0; i < blåArray.length; i++) {
-        (function (i) {
-          blåArray[i].addEventListener("click", function () {
-            pluppClicked(blåArray[i], i);
-          });
-        })(i);
-      }
-  
-      function changeBackground(Array, color) {
-        Array.forEach(div => {
-          div.style.backgroundColor = color;
-          div.style.border = "none";
-          div.style.width = "55px";
+    }
+
+    for (var i = 0; i < alla.length; i++) {
+
+      (function (i) {
+        alla[i].addEventListener("click", function (event) {
+          if (event.shiftKey) {
+            specialflytt = true;
+            pluppClicked(alla[i]);
+
+          } else {
+            pluppClicked(alla[i]);
+          }
         });
+      })(i);
+    }
+
+    function pluppClicked(piece) {
+
+      if(specialflytt == true ){
+
+        
       }
-  
-      function pluppClicked(piece, index) {
-        changeBackground(blåArray, "blue");
-        changeBackground(rödArray, "red");
+      
+
+      if (rödArray.includes(piece) && tur == "röd") {
         piece.style.border = "2px solid #FFFF00";
         piece.style.width = "51px";
-        vald = index;
-  
-        
-          oanvändaArray.forEach((div, i) => {
-            div.addEventListener("click", function () {
-              flytta(i);
-            });
-          });
-  
-        
-  
-  
+        från = piece;
       }
-  
-  
-      function flytta(index) {
-        let div2 = oanvändaArray.splice(index, 1)[0];
-        let divToMove = rödArray.splice(vald, 1)[0];
-        rödArray.push(div2);
-        oanvändaArray.push(divToMove);
-        changeBackground(rödArray, "red");
-        changeBackground(oanvändaArray, "lightgray");
-        vald = null;
-        div2 = null;
-        divToMove = null;
-        console.log(rödArray);
-  
+
+      else if (blåArray.includes(piece) && tur == "blå") {
+        piece.style.border = "2px solid #FFFF00";
+        piece.style.width = "51px";
+        från = piece;
+      }
+
+      else if (oanvändaArray.includes(piece) && från != null) {
+
+        const frånCol = parseInt(från.getAttribute('col'));
+        const frånrow = parseInt(från.getAttribute('row'));
+        const tillCol = parseInt(piece.getAttribute('col'));
+        const tillrow = parseInt(piece.getAttribute('row'));
+        const hypotetiskCol = (frånCol + tillCol) / 2;
+        const hypotetiskRow = (tillrow + frånrow) / 2;
+
+        for (var i = 0; i < alla.length; i++) {
+          if (alla[i].getAttribute('col') == hypotetiskCol && alla[i].getAttribute('row') == hypotetiskRow && !oanvändaArray.includes(alla[i])) {
+
+            index = oanvändaArray.indexOf(piece);
+            flytta(index);
+            break;
+          }
+        }
+
+        if (tillCol == frånCol + 1 || tillCol == frånCol - 1 || tillCol == frånCol + 2 || tillCol == frånCol - 2) {
+
+          if (tillrow == frånrow + 1 || tillrow == frånrow - 1 || tillrow == frånrow) {
+
+            if (specialflytt == false) {
+
+              index = oanvändaArray.indexOf(piece);
+              flytta(index);
+            }
+
+          }
+        }
       }
     }
-  
-  
+
+
+    function flytta(index) {
+
+      if (tur == "röd") {
+        let tal = rödArray.indexOf(från);
+        let div1 = oanvändaArray.splice(index, 1)[0];
+        let div2 = rödArray.splice(tal, 1)[0];
+        rödArray.push(div1);
+        oanvändaArray.push(div2);
+       
+        changeBackground(rödArray, "red");
+        if (specialflytt == true) {
+          från = div1;
+          tur = "röd";
+          från.style.backgroundColor = "pink";
+        }
+        else {
+          tur = "blå";
+          från = null;
+
+        }
+      }
+
+      else if (tur == "blå") {
+        let tal = blåArray.indexOf(från);
+        let div1 = oanvändaArray.splice(index, 1)[0];
+        let div2 = blåArray.splice(tal, 1)[0];
+        blåArray.push(div1);
+        oanvändaArray.push(div2);
+        changeBackground(blåArray, "blue");
+        if (specialflytt == true) {
+          från = div1;
+          tur = "blå";
+          från.style.backgroundColor = "lightblue";
+        }
+        else {
+          tur = "röd";
+          från = null;
+
+        }
+      }
+      changeBackground(oanvändaArray, "#B9B9B9");
+     
+      div1 = null;
+      div2 = null;
+    }
   }
-  window.onload = init;
+}
+window.onload = init;
