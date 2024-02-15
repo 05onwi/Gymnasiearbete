@@ -1,9 +1,12 @@
 function init() {
 
-  let från = null;
+  gamerunning = true;
+
+
+  let from = null;
   let index = null;
-  let tur = "red";
-  let specialflytt = false;
+  let turn = "red";
+  let specialmove = false;
 
   let redArray = Array.from(document.getElementsByClassName('plupp')).filter(div => {
     const rowValue = parseInt(div.getAttribute('row'));
@@ -15,12 +18,12 @@ function init() {
     return rowValue >= 14 && rowValue <= 17;
   });
 
-  let oanvändaArray = Array.from(document.getElementsByClassName('plupp')).filter(div => {
+  let unusedArray = Array.from(document.getElementsByClassName('plupp')).filter(div => {
     const rowValue = parseInt(div.getAttribute('row'));
     return rowValue >= 5 && rowValue <= 13;
   });
 
-  let alla = Array.from(document.getElementsByClassName('plupp'))
+  let all = Array.from(document.getElementsByClassName('plupp'))
 
   changeBackground(redArray, "red");
   changeBackground(blueArray, "blue");
@@ -33,81 +36,92 @@ function init() {
     });
   }
 
-  for (var i = 0; i < alla.length; i++) {
-    alla[i].innerHTML = parseInt(alla[i].getAttribute('col'));
+  all.forEach(function (element) {
+  element.addEventListener("click", function () {
+    pluppClicked(element);
+  });
 
-    (function (i) {
-      alla[i].addEventListener("click", function (event) {
-        pluppClicked(alla[i]);
-      });
-    })(i);
-  }
+  
+    element.addEventListener("mouseover", function () {
+      var color = getComputedStyle(element).backgroundColor;
+      console.log(color);
+
+      if(color == "rgb(185, 185, 185)"){
+        element.style.boxShadow = `0 0 15px black`;
+      }
+      else{
+         element.style.boxShadow = `0 0 15px ${color}`;
+      }
+      new Audio('sounds/move.mp3').play();
+     
+    });
+    
+    element.addEventListener("mouseout", function () {
+      element.style.boxShadow = "none"; 
+      
+    });
+  });
 
   function pluppClicked(piece) {
 
-
-    if (specialflytt == true && från == piece) {
-      if (tur == "red") {
-        tur = "blue";
+    if (specialmove == true && from == piece) {
+      if (turn == "red") {
+        turn = "blue";
       }
-      else if (tur == "blue") {
-        tur = "red";
+      else if (turn == "blue") {
+        turn = "red";
       }
       changeBackground(redArray, "red");
       changeBackground(blueArray, "blue");
-      specialflytt = false;
-      från = null;
+      specialmove = false;
+      from = null;
     }
 
-    if (redArray.includes(piece) && tur == "red" && specialflytt == false) {
+    if (redArray.includes(piece) && turn == "red" && specialmove == false) {
 
       changeBackground(redArray, "red");
       changeBackground(blueArray, "blue");
-      från = null;
       piece.style.border = "2px solid #FFFF00";
       piece.style.width = "51px";
-      från = piece;
-      specialflytt = false;
+      from = piece;
+      specialmove = false;
     }
 
-    else if (blueArray.includes(piece) && tur == "blue" && specialflytt == false) {
+    else if (blueArray.includes(piece) && turn == "blue" && specialmove == false) {
+
       changeBackground(redArray, "red");
       changeBackground(blueArray, "blue");
-
       piece.style.border = "2px solid #FFFF00";
       piece.style.width = "51px";
-      från = piece;
-      specialflytt = false;
+      from = piece;
+      specialmove = false;
     }
 
-    else if (oanvändaArray.includes(piece) && från != null) {
+    else if (unusedArray.includes(piece) && from != null) {
 
-      const frånCol = parseInt(från.getAttribute('col'));
-      const frånrow = parseInt(från.getAttribute('row'));
+      const fromCol = parseInt(from.getAttribute('col'));
+      const fromrow = parseInt(from.getAttribute('row'));
       const tillCol = parseInt(piece.getAttribute('col'));
       const tillrow = parseInt(piece.getAttribute('row'));
-      const hypotetiskCol = (frånCol + tillCol) / 2;
-      const hypotetiskRow = (tillrow + frånrow) / 2;
+      const hypotetiskCol = (fromCol + tillCol) / 2;
+      const hypotetiskRow = (tillrow + fromrow) / 2;
 
-
-      for (var i = 0; i < alla.length; i++) {
-        if (alla[i].getAttribute('col') == hypotetiskCol && alla[i].getAttribute('row') == hypotetiskRow && !oanvändaArray.includes(alla[i])) {
-          if (frånCol - tillCol == -2 || frånCol - tillCol == 2 || frånCol - tillCol == 4 || frånCol - tillCol == -4) {
-
-
-            if (tillrow - frånrow == 2 || tillrow - frånrow == -2 || tillrow == frånrow) {
-              index = oanvändaArray.indexOf(piece);
-              specialflytt = true;
+      for (var i = 0; i < all.length; i++) {
+        if (all[i].getAttribute('col') == hypotetiskCol && all[i].getAttribute('row') == hypotetiskRow && !unusedArray.includes(all[i])) {
+          if (fromCol - tillCol == -2 || fromCol - tillCol == 2 || fromCol - tillCol == 4 || fromCol - tillCol == -4) {
+            if (tillrow - fromrow == 2 || tillrow - fromrow == -2 || tillrow == fromrow) {
+              index = unusedArray.indexOf(piece);
+              specialmove = true;
               flytta(index);
               break;
             }
           }
         }
       }
-      if (tillCol == frånCol + 1 || tillCol == frånCol - 1 || tillCol == frånCol + 2 || tillCol == frånCol - 2) {
-        if (tillrow == frånrow + 1 || tillrow == frånrow - 1 || tillrow == frånrow) {
-          if (specialflytt == false) {
-            index = oanvändaArray.indexOf(piece);
+      if (tillCol == fromCol + 1 || tillCol == fromCol - 1 || tillCol == fromCol + 2 || tillCol == fromCol - 2) {
+        if (tillrow == fromrow + 1 || tillrow == fromrow - 1 || tillrow == fromrow) {
+          if (specialmove == false) {
+            index = unusedArray.indexOf(piece);
             flytta(index);
           }
         }
@@ -116,53 +130,52 @@ function init() {
 
     function flytta(index) {
 
-      if (tur == "red") {
-        från.style.backgroundColor = "Green";
-        let tal = redArray.indexOf(från);
-        let div1 = oanvändaArray.splice(index, 1)[0];
+      if (turn == "red") {
+        from.style.backgroundColor = "Green";
+        let tal = redArray.indexOf(from);
+        let div1 = unusedArray.splice(index, 1)[0];
         let div2 = redArray.splice(tal, 1)[0];
         redArray.push(div1);
-        oanvändaArray.push(div2);
-
+        unusedArray.push(div2);
         changeBackground(redArray, "red");
 
-        if (specialflytt == true) {
-          från = div1;
-          tur = "red";
-          från.style.backgroundColor = "pink";
+        if (specialmove == true) {
+          from = div1;
+          turn = "red";
+          from.style.backgroundColor = "pink";
           new Audio('sounds/move2.mp3').play();
         }
         else {
-          tur = "blue";
-          från = null;
+          turn = "blue";
+          from = null;
         }
       }
 
-      else if (tur == "blue") {
-        let tal = blueArray.indexOf(från);
-        let div1 = oanvändaArray.splice(index, 1)[0];
+      else if (turn == "blue") {
+        let tal = blueArray.indexOf(from);
+        let div1 = unusedArray.splice(index, 1)[0];
         let div2 = blueArray.splice(tal, 1)[0];
         blueArray.push(div1);
-        oanvändaArray.push(div2);
+        unusedArray.push(div2);
         changeBackground(blueArray, "blue");
 
-        if (specialflytt == true) {
-          från = div1;
-          från.style.backgroundColor = "lightblue";
+        if (specialmove == true) {
+          from = div1;
+          from.style.backgroundColor = "lightblue";
           new Audio('sounds/move2.mp3').play();
         }
         else {
-          tur = "red";
-          från = null;
+          turn = "red";
+          from = null;
         }
       }
       new Audio('sounds/move.mp3').play();
-      changeBackground(oanvändaArray, "#B9B9B9");
-      console.log(specialflytt);
-
+      changeBackground(unusedArray, "#B9B9B9");
+      console.log(specialmove);
       div1 = null;
       div2 = null;
     }
   }
 }
+
 window.onload = init;
