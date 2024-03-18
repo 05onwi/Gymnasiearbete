@@ -1,12 +1,19 @@
 function init() {
+  let gamerunning = true;
 
-  gamerunning = true;
+
 
 
   let from = null;
   let index = null;
   let turn = "red";
   let specialmove = false;
+
+  let sound = new Audio('sounds/move.mp3');
+  let sound2 = new Audio('sounds/move2.mp3');
+
+  let turnpiece = document.getElementById("turnpiece");
+  turnpiece.style.backgroundColor = turn;
 
   let redArray = Array.from(document.getElementsByClassName('plupp')).filter(div => {
     const rowValue = parseInt(div.getAttribute('row'));
@@ -25,40 +32,37 @@ function init() {
 
   let all = Array.from(document.getElementsByClassName('plupp'))
 
-  changeBackground(redArray, "red");
-  changeBackground(blueArray, "blue");
+  let redValue = redArray.reduce((total, div) => total + parseInt(div.getAttribute('row')), 0);
+  let blueValue = blueArray.reduce((total, div) => total + parseInt(div.getAttribute('row')), 0);
 
-  function changeBackground(array, color) {
+  changeBackground(redArray, "red", "darkred");
+  changeBackground(blueArray, "blue", "darkblue");
+  changeBackground(unusedArray, "#B9B9B9", "#616060");
+
+  function changeBackground(array, color, color2) {
     array.forEach(div => {
+      div.style.backgroundImage = `radial-gradient(circle, ${color}, ${color2})`;
       div.style.backgroundColor = color;
-      div.style.border = "none";
-      div.style.width = "55px";
     });
   }
 
   all.forEach(function (element) {
-  element.addEventListener("click", function () {
-    pluppClicked(element);
-  });
-
-  
-    element.addEventListener("mouseover", function () {
-      var color = getComputedStyle(element).backgroundColor;
-      console.log(color);
-
-      if(color == "rgb(185, 185, 185)"){
-        element.style.boxShadow = `0 0 15px black`;
-      }
-      else{
-         element.style.boxShadow = `0 0 15px ${color}`;
-      }
-      new Audio('sounds/move.mp3').play();
-     
+    element.addEventListener("click", function () {
+      pluppClicked(element);
     });
-    
+
+    element.addEventListener("mouseover", function () {
+      if (element != from) {
+        var color = getComputedStyle(element).backgroundColor;
+        element.style.boxShadow = `0 0 15px ${color}`;
+      }
+    });
+
     element.addEventListener("mouseout", function () {
-      element.style.boxShadow = "none"; 
-      
+      if (element !== from) {
+        element.style.boxShadow = "none";
+      }
+
     });
   });
 
@@ -71,30 +75,31 @@ function init() {
       else if (turn == "blue") {
         turn = "red";
       }
-      changeBackground(redArray, "red");
-      changeBackground(blueArray, "blue");
+      turnpiece.style.backgroundColor = turn;
+      changeBackground(redArray, "red", "darkred");
+      changeBackground(blueArray, "blue", "darkblue");
       specialmove = false;
       from = null;
     }
 
     if (redArray.includes(piece) && turn == "red" && specialmove == false) {
-
-      changeBackground(redArray, "red");
-      changeBackground(blueArray, "blue");
-      piece.style.border = "2px solid #FFFF00";
-      piece.style.width = "51px";
+      if (from !== null) {
+        from.style.boxShadow = "none";
+      }
+      changeBackground(redArray, "red", "darkred");
+      changeBackground(blueArray, "blue", "darkblue");
+      piece.style.boxShadow = "0 0 15px #FFFF00";
       from = piece;
-      specialmove = false;
     }
 
     else if (blueArray.includes(piece) && turn == "blue" && specialmove == false) {
-
-      changeBackground(redArray, "red");
-      changeBackground(blueArray, "blue");
-      piece.style.border = "2px solid #FFFF00";
-      piece.style.width = "51px";
+      if (from !== null) {
+        from.style.boxShadow = "none";
+      }
+      changeBackground(redArray, "red", "darkred");
+      changeBackground(blueArray, "blue", "darkblue");
+      piece.style.boxShadow = "0 0 15px #FFFF00";
       from = piece;
-      specialmove = false;
     }
 
     else if (unusedArray.includes(piece) && from != null) {
@@ -112,7 +117,7 @@ function init() {
             if (tillrow - fromrow == 2 || tillrow - fromrow == -2 || tillrow == fromrow) {
               index = unusedArray.indexOf(piece);
               specialmove = true;
-              flytta(index);
+              move(index);
               break;
             }
           }
@@ -122,28 +127,30 @@ function init() {
         if (tillrow == fromrow + 1 || tillrow == fromrow - 1 || tillrow == fromrow) {
           if (specialmove == false) {
             index = unusedArray.indexOf(piece);
-            flytta(index);
+            move(index);
           }
         }
       }
     }
 
-    function flytta(index) {
+    function move(index) {
 
       if (turn == "red") {
-        from.style.backgroundColor = "Green";
         let tal = redArray.indexOf(from);
         let div1 = unusedArray.splice(index, 1)[0];
         let div2 = redArray.splice(tal, 1)[0];
         redArray.push(div1);
         unusedArray.push(div2);
-        changeBackground(redArray, "red");
+        changeBackground(redArray, "red", "darkred");
+        div2.style.boxShadow = "none";
 
         if (specialmove == true) {
           from = div1;
           turn = "red";
+          from.style.backgroundImage = "none";
           from.style.backgroundColor = "pink";
-          new Audio('sounds/move2.mp3').play();
+          sound2.load();
+          sound2.play();
         }
         else {
           turn = "blue";
@@ -157,25 +164,40 @@ function init() {
         let div2 = blueArray.splice(tal, 1)[0];
         blueArray.push(div1);
         unusedArray.push(div2);
-        changeBackground(blueArray, "blue");
+        changeBackground(blueArray, "blue", "darkblue");
+        div2.style.boxShadow = "none";
 
         if (specialmove == true) {
           from = div1;
+          from.style.backgroundImage = "none";
           from.style.backgroundColor = "lightblue";
-          new Audio('sounds/move2.mp3').play();
+          sound2.load();
+          sound2.play();
         }
         else {
           turn = "red";
           from = null;
         }
       }
-      new Audio('sounds/move.mp3').play();
-      changeBackground(unusedArray, "#B9B9B9");
-      console.log(specialmove);
+      turnpiece.style.backgroundColor = turn;
+
+      sound.load();
+      sound.play();
+      changeBackground(unusedArray, "#B9B9B9", "#616060");
       div1 = null;
       div2 = null;
+      redValue = redArray.reduce((total, div) => total + parseInt(div.getAttribute('row')), 0);
+      blueValue = blueArray.reduce((total, div) => total + parseInt(div.getAttribute('row')), 0);
+
+    }
+    console.log(redValue, blueValue);
+    if (redValue == 150 || blueValue == 30) {
+
+      gamerunning = false;
     }
   }
+
+
 }
 
 window.onload = init;
