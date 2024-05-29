@@ -1,3 +1,0 @@
-element.addEventListener("click", function () {
-  pluppClicked(element);
-});
